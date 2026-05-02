@@ -1,0 +1,32 @@
+.card {
+  background-color: blanchedalmond;
+  max-width: 300px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.newBook {
+  height: 2.5em;
+  width: 6em;
+  background-color: aqua;
+  margin-top: 20px;
+  border-radius: 5px;
+  font-weight: 550;
+}
+.form {
+  height: 160px;
+  width: 280px;
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 20px;
+  padding: 10px;
+}
+.submitBtn {
+  height: 2.5em;
+  width: 6em;
+  background-color: bisque;
+  border-radius: 5px;
+  font-weight: 550;
+}
