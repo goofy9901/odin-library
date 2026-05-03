@@ -34,6 +34,10 @@ const first = addBookToLibrary(
 const second = addBookToLibrary("1984", "George Orwell", "328", false);
 const third = addBookToLibrary("The Hobbit", "Tolkien", "310", true);
 
+Books.prototype.toggleRead = function () {
+  this.isRead = !this.isRead;
+};
+
 const booksOnPage = function () {
   cardsConatiner.innerHTML = "";
   for (let i = 0; i < myLibrary.length; i++) {
@@ -41,6 +45,29 @@ const booksOnPage = function () {
     cardsConatiner.appendChild(card);
     card.classList = "card";
     card.textContent = `${myLibrary[i].title}, ${myLibrary[i].author}, ${myLibrary[i].pages}, ${myLibrary[i].isRead}`;
+    const removeBtn = document.createElement("button");
+    card.appendChild(removeBtn);
+    removeBtn.classList = "removeBtn";
+    removeBtn.textContent = "Remove";
+    card.dataset.id = myLibrary[i].id;
+    removeBtn.addEventListener("click", function () {
+      const index = myLibrary.findIndex(function (book) {
+        return book.id === card.dataset.id;
+      });
+      myLibrary.splice(index, 1);
+      booksOnPage();
+    });
+    const readBtn = document.createElement("button");
+    card.appendChild(readBtn);
+    readBtn.classList = "readBtn";
+    readBtn.textContent = "Read";
+    readBtn.addEventListener("click", function () {
+      const bookIndex = myLibrary.findIndex(function (book) {
+        return book.id === card.dataset.id;
+      });
+      myLibrary[bookIndex].toggleRead();
+      booksOnPage();
+    });
   }
 };
 
